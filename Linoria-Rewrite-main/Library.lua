@@ -3192,7 +3192,7 @@ function Library:CreateWindow(...)
 
             TabFrame.Visible = true;
             Blocker.BackgroundTransparency = 0;
-            TabButton.BackgroundColor3 = Library.AccentColor;
+            TabButton.BackgroundColor3 = Library.BackgroundColor;
             TabButtonLabel.TextColor3 = Library.AccentColor;
             Highlight.BackgroundColor3 = Library.AccentColor;
             Highlight.ZIndex = 3;
