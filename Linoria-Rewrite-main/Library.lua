@@ -2621,7 +2621,7 @@ function Library:CreateWindow(...)
             Parent = TabFrame;
             CanvasSize = UDim2.new(0, 0, 0, 0);
             ScrollBarImageTransparency = 1;
-            ClipsDescendants = false;
+            ClipsDescendants = true;
         });
 
         local RightSide = Library:Create('ScrollingFrame', {
@@ -2632,7 +2632,7 @@ function Library:CreateWindow(...)
             Parent = TabFrame;
 			CanvasSize = UDim2.new(0, 0, 0, 0);
             ScrollBarImageTransparency = 1;
-            ClipsDescendants = false;
+            ClipsDescendants = true;
         });
 
         Library:Create('UIListLayout', {
