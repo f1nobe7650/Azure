@@ -3184,24 +3184,32 @@ function Library:CreateWindow(...)
             end);
         end;
 
-        function Tab:ShowTab()
+		function Tab:ShowTab()
             for _, Tab in next, Window.Tabs do
                 Tab:HideTab();
             end;
 
-            Blocker.BackgroundTransparency = 0;
-            TabButton.BackgroundColor3 = Library.MainColor;
-            Library.RegistryMap[TabButton].Properties.BackgroundColor3 = 'MainColor';
             TabFrame.Visible = true;
-			TabButtonLabel.TextColor3 = Library.AccentColor;
+            Blocker.BackgroundTransparency = 0;
+            TabButton.BackgroundColor3 = Library.SelectedTabColor;
+            TabButtonLabel.TextColor3 = Library.AccentColor;
+            Highlight.BackgroundColor3 = Library.AccentColor;
+            Highlight.ZIndex = 3;
+            Highlight.Visible = true;
+            Library.RegistryMap[TabButton].Properties.BackgroundColor3 = 'SelectedTabColor';
+            TabFrame.Visible = true;
         end;
+
 
         function Tab:HideTab()
             Blocker.BackgroundTransparency = 1;
             TabButton.BackgroundColor3 = Library.BackgroundColor;
+            TabButtonLabel.TextColor3 = Library.FontColor;
+            Highlight.BackgroundColor3 = Library.OutlineColor;
+            Highlight.ZIndex = 1;
+            Highlight.Visible = false;
             Library.RegistryMap[TabButton].Properties.BackgroundColor3 = 'BackgroundColor';
             TabFrame.Visible = false;
-			TabButtonLabel.TextColor3 = Library.FontColor;
         end;
 
         function Tab:SetLayoutOrder(Position)
