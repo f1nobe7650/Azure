@@ -3193,6 +3193,7 @@ function Library:CreateWindow(...)
             TabButton.BackgroundColor3 = Library.MainColor;
             Library.RegistryMap[TabButton].Properties.BackgroundColor3 = 'MainColor';
             TabFrame.Visible = true;
+			TabButtonLabel.TextColor3 = Library.AccentColor;
         end;
 
         function Tab:HideTab()
@@ -3200,6 +3201,7 @@ function Library:CreateWindow(...)
             TabButton.BackgroundColor3 = Library.BackgroundColor;
             Library.RegistryMap[TabButton].Properties.BackgroundColor3 = 'BackgroundColor';
             TabFrame.Visible = false;
+			TabButtonLabel.TextColor3 = Library.FontColor;
         end;
 
         function Tab:SetLayoutOrder(Position)
