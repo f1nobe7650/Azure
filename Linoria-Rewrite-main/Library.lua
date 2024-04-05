@@ -2622,6 +2622,7 @@ function Library:CreateWindow(...)
             CanvasSize = UDim2.new(0, 0, 0, 0);
             ScrollBarImageTransparency = 1;
             ClipsDescendants = true;
+			AutomaticCanvasSize = Enum.AutomaticSize.Y;
         });
 
         local RightSide = Library:Create('ScrollingFrame', {
@@ -2633,6 +2634,7 @@ function Library:CreateWindow(...)
 			CanvasSize = UDim2.new(0, 0, 0, 0);
             ScrollBarImageTransparency = 1;
             ClipsDescendants = true;
+			AutomaticCanvasSize = Enum.AutomaticSize.Y;
         });
 
         Library:Create('UIListLayout', {
