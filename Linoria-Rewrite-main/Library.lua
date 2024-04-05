@@ -2613,29 +2613,52 @@ function Library:CreateWindow(...)
             Parent = TabContainer;
         });
 
+		--[[
+					Left.Position = UDim2.new(0,5,0,0)
+		Left.Size = UDim2.new(0.485,-3,1,-40)
+		Left.BackgroundColor3 = Color3.new(1,1,1)
+		Left.BorderSizePixel = 0
+		Left.BackgroundTransparency = 1
+		Left.BorderColor3 = Color3.new(0,0,0)
+		Left.Visible =true
+		Left.ZIndex = 3
+		Left.CanvasSize = UDim2.new(0, 0, 0, 0)
+		Left.ScrollBarImageTransparency = 1
+		Left.ClipsDescendants = false
+		Left.AutomaticCanvasSize = Enum.AutomaticSize.Y
+		]]
+
         local LeftSide = Library:Create('ScrollingFrame', {
-            BackgroundTransparency = 1;
-            Position = UDim2.new(0, 8, 0, 8);
-            Size = UDim2.new(0.5, -12, 0, 507);
+            ackgroundTransparency = 1;
+            BorderSizePixel = 0;
+            Position = UDim2.new(0, 8 - 1, 0, 8 - 1);
+            Size = UDim2.new(0.5, -12 + 2, 0, 507 + 2);
+            CanvasSize = UDim2.new(0, 0, 0, 0);
+            BottomImage = '';
+            TopImage = '';
+            ScrollBarThickness = 0;
             ZIndex = 2;
             Parent = TabFrame;
-            CanvasSize = UDim2.new(0, 0, 0, 0);
-            ScrollBarImageTransparency = 1;
-            ClipsDescendants = true;
-			AutomaticCanvasSize = Enum.AutomaticSize.Y;
         });
 
         local RightSide = Library:Create('ScrollingFrame', {
             BackgroundTransparency = 1;
-            Position = UDim2.new(0.5, 4, 0, 8);
-            Size = UDim2.new(0.5, -12, 0, 507);
+            BorderSizePixel = 0;
+            Position = UDim2.new(0.5, 4 + 1, 0, 8 - 1);
+            Size = UDim2.new(0.5, -12 + 2, 0, 507 + 2);
+            CanvasSize = UDim2.new(0, 0, 0, 0);
+            BottomImage = '';
+            TopImage = '';
+            ScrollBarThickness = 0;
             ZIndex = 2;
             Parent = TabFrame;
-			CanvasSize = UDim2.new(0, 0, 0, 0);
-            ScrollBarImageTransparency = 1;
-            ClipsDescendants = true;
-			AutomaticCanvasSize = Enum.AutomaticSize.Y;
         });
+
+		for _, Side in next, { LeftSide, RightSide } do
+            Side:WaitForChild('UIListLayout'):GetPropertyChangedSignal('AbsoluteContentSize'):Connect(function()
+                Side.CanvasSize = UDim2.fromOffset(0, Side.UIListLayout.AbsoluteContentSize.Y);
+            end);
+        end;
 
         Library:Create('UIListLayout', {
             Padding = UDim.new(0, 8);
